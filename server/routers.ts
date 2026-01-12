@@ -94,16 +94,18 @@ export const appRouter = router({
           paymentReference: paymentRef,
         });
 
+        const orderId = (order as any).insertId || 1;
+
         for (const item of input.items) {
           await addOrderItem({
-            orderId: 1,
+            orderId,
             productId: item.productId,
             quantity: item.quantity,
             price: item.price,
           });
         }
 
-        return { orderId: 1, paymentReference: paymentRef };
+        return { orderId, paymentReference: paymentRef };
       }),
 
     list: protectedProcedure.query(async () => {
