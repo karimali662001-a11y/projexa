@@ -10,9 +10,27 @@ export default function Order() {
     clientPhone: "",
     projectCategory: "",
     projectDesc: "",
+    paymentMethod: "instapay",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+
+  // Payment details
+  const paymentMethods = {
+    instapay: {
+      name: "InstaPay",
+      number: "+20 10 99577886",
+      icon: "📱",
+      instructions: "حول المبلغ إلى رقم InstaPay أعلاه وأرسل رقم التحويل",
+    },
+    orangecash: {
+      name: "Orange Cash",
+      number: "+20 12 70230479",
+      icon: "🟠",
+      instructions: "حول المبلغ إلى رقم Orange Cash أعلاه وأرسل رقم التحويل",
+    },
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -30,12 +48,17 @@ export default function Order() {
 
     try {
       // Create order
+      const paymentMethodMap: { [key: string]: 'instapay' | 'vodafone_cash' | 'manual' } = {
+        instapay: 'instapay',
+        orangecash: 'vodafone_cash',
+      };
+
       const result = await createOrderMutation.mutateAsync({
         customerEmail: formData.clientEmail,
         customerName: formData.clientName,
         customerPhone: formData.clientPhone,
         totalAmount: 59000, // Default amount from your pricing
-        paymentMethod: "manual",
+        paymentMethod: paymentMethodMap[formData.paymentMethod] || 'manual',
         shippingAddress: formData.projectCategory,
         items: [
           {
@@ -56,7 +79,9 @@ export default function Order() {
           clientPhone: "",
           projectCategory: "",
           projectDesc: "",
+          paymentMethod: "instapay",
         });
+        setShowPaymentDetails(false);
 
         // Redirect to order tracking
         setTimeout(() => {
@@ -175,13 +200,49 @@ export default function Order() {
                 />
               </div>
 
+              <div className="form-group">
+                <label htmlFor="paymentMethod">طريقة الدفع</label>
+                <select
+                  id="paymentMethod"
+                  name="paymentMethod"
+                  value={formData.paymentMethod}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setShowPaymentDetails(true);
+                  }}
+                  required
+                >
+                  <option value="instapay">InstaPay</option>
+                  <option value="orangecash">Orange Cash</option>
+                </select>
+              </div>
+
+              {showPaymentDetails && (
+                <div className="bg-[rgba(139,92,246,0.1)] border border-[#8b5cf6] rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl">{paymentMethods[formData.paymentMethod as keyof typeof paymentMethods].icon}</span>
+                    <h4 className="font-bold text-lg">{paymentMethods[formData.paymentMethod as keyof typeof paymentMethods].name}</h4>
+                  </div>
+                  <div className="bg-[#0f172a] rounded p-3 mb-3">
+                    <p className="text-[#94a3b8] text-sm mb-2">رقم الحساب:</p>
+                    <p className="text-[#8b5cf6] font-bold text-lg">{paymentMethods[formData.paymentMethod as keyof typeof paymentMethods].number}</p>
+                  </div>
+                  <p className="text-[#94a3b8] text-sm">
+                    {paymentMethods[formData.paymentMethod as keyof typeof paymentMethods].instructions}
+                  </p>
+                </div>
+              )}
+
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className="btn btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "جاري الإرسال..." : "إرسال الطلب للإدارة"}
+                {isSubmitting ? "جاري الإرسال..." : "إرسال الطلب والمتابعة"}
               </button>
+              <p className="text-[#94a3b8] text-sm text-center mt-3">
+                بعد الإرسال، ستتلقى رسالة تأكيد بتفاصيل الدفع والطلب
+              </p>
             </form>
 
             {/* Pricing Info */}

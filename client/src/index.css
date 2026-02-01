@@ -160,6 +160,24 @@
     padding-right: 1rem;
   }
 
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .container-rtl {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
   .flex {
     min-height: 0;
     min-width: 0;
@@ -167,7 +185,7 @@
 
   /* Projexa Custom Styles */
   .btn {
-    @apply px-8 py-3 rounded-lg font-bold transition-all duration-300 cursor-pointer inline-block text-center;
+    @apply px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg font-bold transition-all duration-300 cursor-pointer inline-block text-center text-sm sm:text-base;
   }
 
   .btn-primary {
@@ -179,11 +197,11 @@
   }
 
   .card {
-    @apply bg-[#1e293b] rounded-2xl p-8 border border-[rgba(255,255,255,0.05)] transition-all duration-300;
+    @apply bg-[#1e293b] rounded-2xl p-4 sm:p-6 md:p-8 border border-[rgba(255,255,255,0.05)] transition-all duration-300;
   }
 
   .glass-card {
-    @apply bg-[rgba(30,41,59,0.5)] backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-3xl p-8;
+    @apply bg-[rgba(30,41,59,0.5)] backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-3xl p-4 sm:p-6 md:p-8;
   }
 
   .form-group {
@@ -197,7 +215,7 @@
   .form-group input,
   .form-group textarea,
   .form-group select {
-    @apply w-full px-4 py-3 bg-[#0f172a] border border-[rgba(255,255,255,0.1)] text-white rounded-lg outline-none transition-all duration-300;
+    @apply w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#0f172a] border border-[rgba(255,255,255,0.1)] text-white rounded-lg outline-none transition-all duration-300 text-base sm:text-sm;
   }
 
   .form-group input:focus,
@@ -223,7 +241,7 @@
   }
 
   .sidebar-link {
-    @apply flex items-center gap-4 px-4 py-3 text-[#94a3b8] no-underline rounded-xl mb-1 transition-all duration-300 cursor-pointer;
+    @apply flex items-center gap-2 sm:gap-4 px-2 sm:px-4 py-2 sm:py-3 text-[#94a3b8] no-underline rounded-xl mb-1 transition-all duration-300 cursor-pointer text-sm sm:text-base;
   }
 
   .sidebar-link:hover,
@@ -232,15 +250,25 @@
   }
 
   .data-table {
-    @apply w-full border-collapse mt-8;
+    @apply w-full border-collapse mt-4 sm:mt-6 md:mt-8 text-xs sm:text-sm md:text-base;
   }
 
   .data-table th {
-    @apply text-right px-4 py-3 text-[#06b6d4] border-b-2 border-[#8b5cf6];
+    @apply text-right px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-[#06b6d4] border-b-2 border-[#8b5cf6];
   }
 
   .data-table td {
-    @apply px-4 py-3 border-b border-[rgba(255,255,255,0.05)] text-[#f8fafc];
+    @apply px-2 sm:px-3 md:px-4 py-2 sm:py-3 border-b border-[rgba(255,255,255,0.05)] text-[#f8fafc];
+  }
+
+  @media (max-width: 640px) {
+    .data-table {
+      font-size: 0.75rem;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 0.5rem;
+    }
   }
 
   .animate-fade-in {

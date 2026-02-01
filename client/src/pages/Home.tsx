@@ -86,14 +86,14 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="min-h-[80vh] flex flex-col justify-center items-center text-center py-20 px-5">
-        <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight animate-slide-up">
+      <section className="min-h-screen sm:min-h-[80vh] flex flex-col justify-center items-center text-center py-12 sm:py-20 px-4 sm:px-5">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight animate-slide-up">
           نصمم <span className="gradient-text">المستقبل</span> الرقمي بأيدي خبراء
         </h1>
-        <p className="text-xl text-[#94a3b8] max-w-3xl mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <p className="text-base sm:text-lg md:text-xl text-[#94a3b8] max-w-3xl mb-6 sm:mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           وكالة Projexa هي شريكك التقني لتنفيذ أضخم المشاريع البرمجية، من تطبيقات الموبايل إلى أنظمة الذكاء الاصطناعي المعقدة.
         </p>
-        <div className="flex gap-4 justify-center flex-wrap animate-fade-in" style={{ animationDelay: "0.4s" }}>
+        <div className="flex gap-2 sm:gap-4 justify-center flex-wrap animate-fade-in" style={{ animationDelay: "0.4s" }}>
           <Link href="/projects" className="btn btn-primary">
             استكشف أعمالنا
           </Link>
@@ -107,24 +107,24 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-5 bg-[rgba(15,23,42,0.5)]">
+      <section id="services" className="py-12 sm:py-16 md:py-20 px-4 sm:px-5 bg-[rgba(15,23,42,0.5)]">
         <div className="container-rtl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4">تخصصاتنا الاحترافية</h2>
-            <p className="text-[#94a3b8] text-lg">نقدم حلولاً برمجية متكاملة تناسب طموحاتك</p>
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 sm:mb-4">تخصصاتنا الاحترافية</h2>
+            <p className="text-[#94a3b8] text-sm sm:text-base md:text-lg">نقدم حلولاً برمجية متكاملة تناسب طموحاتك</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, idx) => (
               <div
                 key={idx}
                 className="card hover:border-[#8b5cf6] hover:shadow-glow animate-slide-up"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
-                <div className="text-5xl text-[#8b5cf6] mb-4">
+                <div className="text-4xl sm:text-5xl text-[#8b5cf6] mb-3 sm:mb-4">
                   <i className={service.icon}></i>
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-[#94a3b8]">{service.desc}</p>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">{service.title}</h3>
+                <p className="text-[#94a3b8] text-sm sm:text-base">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -132,10 +132,10 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-5">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-5">
         <div className="container-rtl text-center">
-          <h2 className="text-4xl font-black mb-6">هل أنت مستعد لبدء مشروعك؟</h2>
-          <p className="text-[#94a3b8] text-lg mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6">هل أنت مستعد لبدء مشروعك؟</h2>
+          <p className="text-[#94a3b8] text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
             تواصل معنا اليوم واحصل على استشارة مجانية لتحويل فكرتك إلى واقع رقمي ناجح
           </p>
           <Link href="/order" className="btn btn-primary inline-block">
@@ -145,30 +145,30 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0f172a] border-t border-[rgba(255,255,255,0.1)] py-12 px-5">
+      <footer className="bg-[#0f172a] border-t border-[rgba(255,255,255,0.1)] py-8 sm:py-12 px-4 sm:px-5">
         <div className="container-rtl">
-          <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
-            <div className="gradient-text text-2xl font-black flex items-center gap-2">
+          <div className="flex justify-between items-center mb-6 sm:mb-8 flex-wrap gap-3 sm:gap-4">
+            <div className="gradient-text text-xl sm:text-2xl font-black flex items-center gap-2">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/606/606203.png"
-                width="30"
+                width="25"
                 alt="Projexa"
               />
-              PROJEXA
+              <span className="hidden sm:inline">PROJEXA</span>
             </div>
-            <div className="flex gap-4">
-              <a href="#" className="text-[#94a3b8] text-2xl hover:text-[#8b5cf6]">
+            <div className="flex gap-3 sm:gap-4">
+              <a href="#" className="text-[#94a3b8] text-lg sm:text-2xl hover:text-[#8b5cf6] transition">
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href="#" className="text-[#94a3b8] text-2xl hover:text-[#8b5cf6]">
+              <a href="#" className="text-[#94a3b8] text-lg sm:text-2xl hover:text-[#8b5cf6] transition">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="#" className="text-[#94a3b8] text-2xl hover:text-[#8b5cf6]">
+              <a href="#" className="text-[#94a3b8] text-lg sm:text-2xl hover:text-[#8b5cf6] transition">
                 <i className="fab fa-github"></i>
               </a>
             </div>
           </div>
-          <div className="text-center text-[#94a3b8] text-sm">
+          <div className="text-center text-[#94a3b8] text-xs sm:text-sm">
             <p>جميع الحقوق محفوظة لشركة Projexa © 2025 | <i className="fas fa-lock"></i> اتصال مشفر وآمن</p>
           </div>
         </div>
